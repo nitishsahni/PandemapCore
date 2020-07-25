@@ -43,9 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'taggit',
+    'django_crontab',
     'django.contrib.flatpages',
     'django.contrib.redirects',
 
+]
+
+CRONJOBS = [
+    ('*/2 * * * *', 'places.places.payload')
 ]
 
 SITE_ID = 1
