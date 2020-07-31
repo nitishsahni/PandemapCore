@@ -7,7 +7,6 @@ from watson_machine_learning_client import WatsonMachineLearningAPIClient
 import cv2
 import numpy as np
 import pandas as pd
-from sqlalchemy import create_engine
 
 cos_credentials = {
     "apikey": "NULRnqqPdlhjS-ILOY-F-t2KDIijR65USlVgPtYeSIqN",
@@ -35,7 +34,6 @@ deployment = { 'metadata': { 'guid': '16342a7a-366e-4490-8389-e7d2c6e7e769',
                                'guid': '19d9fb47-2b47-4181-8290-a2acc04c3050' } } }
 
 
-engine = create_engine('postgres://bfpcsqzi:1xfS83st-zspeZ48nUwpkpI5S259CGhs@hanno.db.elephantsql.com:5432/bfpcsqzi')
 
 def get_prediction(http_ref):
     image = get_frame(http_ref)

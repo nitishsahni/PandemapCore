@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view
 from .serializers import StudentSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from ..accounts.models import User
+
 
 @api_view(['GET', 'POST'])
 def students_list(request, format=None):
@@ -21,9 +23,10 @@ def students_list(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def student_detail(request, pk, format=None):
+def student_detail(request, u_id, format=None):
     try:
-        student = Student.objects.get(pk=pk)
+        user = User.objects.get(pk=u_id)
+        student = Student.objects.get(user=user)
     except Student.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

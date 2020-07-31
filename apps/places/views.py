@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from ..master.models import Place_Type
 from .crowd_counting_api import *
+from .locationtimes import *
 from .models import Place, Interval
 from rest_framework.decorators import api_view
 from .serializers import PlaceSerializer, IntervalSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from .preference import Preference
 
 
 @api_view(['GET', 'POST'])
@@ -140,6 +142,24 @@ def single_place_information(request):
         "crowdingDetails": crowding_details
     }
     return Response(return_dict)
+
+@api_view(['POST'])
+def location_times(request):
+    try:
+        group_location((request.GET['latitude'],
+                        request.GET['longitude']),
+                       request.GET['u_id'])
+        return Response({"Status" : "OK"})
+    except Exception as e:
+        return Response({"Error" : str(e)}), status.HTTP_404_NOT_FOUND
+
+@api_view(['POST'])
+def preferences(request):
+    query = request.GET['query']
+    latitude, longitude = request.GET['latitude'], request.GET['longitude']
+    top_3 = Preference(query, latitude, longitude)
+    return Response(top_3)
+
 
 
 def get_distance(latitude, longitude, param, param1):

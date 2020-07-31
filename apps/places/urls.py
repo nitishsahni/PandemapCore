@@ -8,5 +8,7 @@ urlpatterns = [
     path('interval_detail/<int:pk>', views.interval_detail, name='interval_detail'),
     path('payload/', views.crowd_counting, name='crowd_counting_api'),
     path('summary/', views.summary, name="summary"),
-    path('single_place_information/', views.single_place_information, name="single_place_information")
+    path('single_place_information/', views.single_place_information, name="single_place_information"),
+    path('location_times/', views.location_times, name="location_times"),
+    path('preferences/', views.preferences, name="preferences"),
 ]
