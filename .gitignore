@@ -4,3 +4,17 @@
 # PYTHON
 *.pyc
 *.pyo
+
+# CONFIDENTIAL STUFF
+settings.py
+crowd_counting_api.py
+locationtimes.py
+preference.py
+
+# VENV
+venv
+
+# Cloud_Foundry Stuff
+manifest.yml
+Procfile
+runtime.txt
