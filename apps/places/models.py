@@ -14,7 +14,7 @@ class Place(models.Model):
     type_of_place = models.ForeignKey(Place_Type, on_delete=models.CASCADE)
     max_people = models.IntegerField()
     http_ref = models.URLField(blank=True)
-    tags = models.CharField(max_length=1000)
+    tags = models.CharField(max_length=1000, blank=True)
 
     def __str__(self):
         return self.name

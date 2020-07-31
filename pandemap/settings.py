@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken'
-    'taggit',
+    'rest_framework.authtoken',
     'django_crontab',
     'django.contrib.flatpages',
     'django.contrib.redirects',

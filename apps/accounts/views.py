@@ -13,7 +13,7 @@ from rest_framework.response import Response
 class SignupForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('password1')
+        fields = ('password1',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
