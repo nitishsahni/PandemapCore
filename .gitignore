@@ -6,10 +6,7 @@
 *.pyo
 
 # CONFIDENTIAL STUFF
-settings.py
-crowd_counting_api.py
-locationtimes.py
-preference.py
+credentials.py
 
 # VENV
 venv
