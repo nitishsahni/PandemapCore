@@ -1,1 +1,0 @@
-web: python manage.py migrate && gunicorn pandemap.wsgi --log-file -

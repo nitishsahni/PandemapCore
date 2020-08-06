@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.shortcuts import render
+
 from ..master.models import Place_Type
 from .crowd_counting_api import *
 from .locationtimes import *
@@ -86,6 +88,7 @@ def interval_detail(request, pk, format=None):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+# The watson crowd counting endpoint that calls the main function
 def crowd_counting(request):
     try:
         payload()
@@ -125,6 +128,8 @@ def summary(request):
     return Response(to_return)
 
 
+
+
 @api_view(['GET'])
 def single_place_information(request):
     place_id = int(request.GET["id"])
@@ -143,6 +148,8 @@ def single_place_information(request):
     }
     return Response(return_dict)
 
+
+# The location mappnig endpoint
 @api_view(['POST'])
 def location_times(request):
     try:
@@ -153,6 +160,8 @@ def location_times(request):
     except Exception as e:
         return Response({"Error" : str(e)}), status.HTTP_404_NOT_FOUND
 
+
+# The preference endpoint hit when someone searches
 @api_view(['POST'])
 def preferences(request):
     query = request.GET['query']
@@ -193,3 +202,18 @@ def fill_intervals(place):
         crowding_details[i][j] = no_of_people / place.max_people
         j += 1
     return crowding_details
+
+
+def cc_view(request):
+    if request.method == "POST":
+        try:
+            crowd_count =  get_prediction(request.POST.get('cctvlink'))
+        except Exception as e:
+            crowd_count = str(e)
+        print(crowd_count)
+    else:
+        crowd_count = " "
+
+    return render(request, 'tester.html',{
+        'crowd_count': crowd_count,
+    })

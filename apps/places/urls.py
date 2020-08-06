@@ -11,4 +11,5 @@ urlpatterns = [
     path('single_place_information/', views.single_place_information, name="single_place_information"),
     path('location_times/', views.location_times, name="location_times"),
     path('preferences/', views.preferences, name="preferences"),
+    path('cc/', views.cc_view, name="cc_view"),
 ]
