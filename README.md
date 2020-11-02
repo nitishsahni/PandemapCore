@@ -26,4 +26,4 @@ Pandemap is a location suggestion system for college students that recommends th
 2. Django
 3. Elephant SQL
 
-Visit ![Pandemap](https://raw.githubusercontent.com/tejjogani/Pandemap/) to view all the components of the submission.
+Visit [Pandemap](https://raw.githubusercontent.com/tejjogani/Pandemap/) to view all the components of the submission.
